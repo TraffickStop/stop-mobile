@@ -1,24 +1,19 @@
+import CSS from 'csstype';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Home.css';
+import Start from '../components/Start';
+import './Home.scss';
+
+const pageStyles: CSS.Properties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+}
 
 const Home: React.FC = () => {
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Blank</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer />
-      </IonContent>
+    <IonPage style={pageStyles}>
+      <Start></Start>
     </IonPage>
   );
 };
