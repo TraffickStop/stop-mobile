@@ -1,17 +1,30 @@
 import { Plugins, CameraResultType, Capacitor, FilesystemDirectory, 
     CameraPhoto, CameraSource } from '@capacitor/core';
 import CSS from 'csstype';
-import { IonButton, IonText } from "@ionic/react";
+import { IonButton, IonModal, IonText } from "@ionic/react";
 import React from "react";
 import { constants } from '../core/constants';
 import CameraFocus from './graphics/CameraFocus';
 import examplePhoto from '../assets/imgs/example-photo.png';
+import SearchingModal from './SearchingModal';
 
 const { Camera, Filesystem, Storage } = Plugins;
 
 
-class Start extends React.Component {
+interface StartProps {}
+
+interface IState {
+    showModal: boolean;
+}
+
+class Start extends React.Component<any, IState> {
+
+    state = {
+        showModal: false
+    }
+
     private capturedPhoto: CameraPhoto | null = null;
+
 
     private capturePhoto = async () => {
         this.capturedPhoto = await Camera.getPhoto({
@@ -19,6 +32,10 @@ class Start extends React.Component {
             source: CameraSource.Camera, 
             quality: 100 
         });
+    }
+
+    public setShowModal = () => {
+        this.setState(current => ({showModal: !current.showModal}))
     }
 
     render() {
@@ -33,6 +50,13 @@ class Start extends React.Component {
                     <p>We will show you potential matches of missing people.</p>
                 </IonText>
                 <IonButton expand="block" onClick={this.capturePhoto}>Start</IonButton>
+                
+                {/* Button for testing the Modal only  */}
+                <IonButton expand="block" onClick={this.setShowModal}>Test Searching Modal</IonButton>
+                
+                <IonModal isOpen={this.state.showModal} animated={false}>
+                    <SearchingModal setShowModal={this.setShowModal} />
+                </IonModal>
             </div>
         )
     }
