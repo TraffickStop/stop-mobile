@@ -1,0 +1,41 @@
+.FacesPage .faceSelectorBox {
+  /* width: px; */
+}
+
+.FacesPage .selectedFace {
+  width: 60%;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.FacesPage .selectedFace img {
+  border-radius: 10px;
+}
+
+.FacesPage .faceSelectorBox img {
+  border-radius: 10px;
+}
+
+.FacesPage .FacesPageContent {
+  padding: 20px;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.FacesPage .FaceGrid {
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  margin-top: 20px;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.FacesPage .FaceGrid > div {
+  flex: 0 32%;
+  height: 100px;
+  margin-bottom: 2%; /* (100-32*3)/2 */
+}

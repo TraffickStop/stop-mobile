@@ -1,0 +1,151 @@
+ion-slides {
+  height: 80%;
+  font-family: 'Poppins';
+}
+
+.swiper-slide {
+  display: block;
+}
+
+.swiper-slide h2 {
+  margin-top: 2.8rem;
+}
+
+.swiper-slide img {
+  max-height: 30%;
+  max-width: 50%;
+  margin: 60px 0 40px;
+  pointer-events: none;
+}
+
+.slide {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+b {
+  font-weight: 500;
+}
+
+p {
+  padding: 0 40px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ion-color-step-600, #60646b);
+}
+
+p b {
+  color: var(--ion-text-color, #000000);
+}
+
+.ready-button {
+  margin-top: 20px;
+
+  background-color: #d81159;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-family: 'Poppins';
+  font-size: 14px;
+  padding: 18px 10px;
+  border-radius: 27px;
+  margin: 0 auto;
+}
+.ready-button ion-icon {
+  margin-left: 5px;
+}
+
+.next-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-family: 'Poppins';
+  font-size: 14px;
+  color: #fff;
+  width: 80%;
+  background-color: #2b2b2b;
+  padding: 18px 10px;
+  border-radius: 27px;
+  margin: 0 auto;
+}
+.next-button ion-icon {
+  margin-left: 5px;
+}
+
+.passive-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-family: 'Poppins';
+  font-size: 14px;
+  color: #333;
+  width: 80%;
+  padding: 18px 10px;
+  margin: 0 auto;
+}
+
+.onboarding-progress {
+  width: 30%;
+  max-width: 200px;
+}
+
+.onboarding-streaks .emoji {
+  font-size: 2em;
+  margin-right: 10px;
+}
+.onboarding-streaks span {
+  margin-right: 5px;
+}
+.onboarding-streaks {
+  font-size: 1em;
+  font-family: 'Poppins';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2b2b2b;
+}
+
+.onboarding-repo {
+  width: 95%;
+  max-width: 400px;
+}
+
+.slide p {
+  max-width: 510px;
+}
+
+.ion-ipad-compatibility {
+  max-width: 400px;
+}
+
+.ion-page-ipad-compatibility {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.onboarding-repo .feedItem {
+  width: 95%;
+}
+
+.onboarding-repo .itemText {
+  text-align: center;
+}
+.onboarding-repo .itemText img {
+  margin: 0;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 5px;
+}
+
+.swiper-slide img.biggerImage {
+  width: 90%;
+  max-width: 400px;
+}
