@@ -30,14 +30,14 @@ export default class ResultsComponent extends React.Component<Props, State> {
 
     render() {
         return (
-            <div style={this.ResultComponentStyle}>
+            <div style={this.resultComponentStyle}>
             <IonGrid>
                 <IonRow>
                     <h1>We found a high probability match</h1>
                 </IonRow>
                 {this.count.map(num => <SingleResult key={num} photo={this.stockPhoto} />)}
                 <IonRow className="ion-justify-content-center">
-                    <div style={this.ResultButtonStyle}>
+                    <div style={this.resultButtonStyle}>
                         <IonButton color="danger" onClick={this.triggerAlert}>Contact Law Enforcement</IonButton>
                         <IonAlert 
                             isOpen={this.state.showAlert} 
@@ -62,14 +62,6 @@ export default class ResultsComponent extends React.Component<Props, State> {
         // padding: '1rem 0 rem 0',
     }
 
-    private imageContainerStyle: CSS.Properties = {
-        textAlign: 'center',
-        padding: '2rem'
-    }
-
-    private spinnerStyle: CSS.Properties = {
-        transform: 'scale(1.5)'
-    }
 
     private resultButtonStyle: CSS.Properties = {
         paddingTop: '1em'

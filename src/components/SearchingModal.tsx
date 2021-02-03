@@ -17,15 +17,15 @@ class SearchingModal extends React.Component<Props> {
 
     render() {
         return (
-            <div style={this.SearchingModalStyle}>
+            <div style={this.searchingModalStyle}>
               <h1>
                   Searching...
               </h1>
-              <div style={this.ImageContainerStyle}>
+              <div style={this.imageContainerStyle}>
                 <IonImg src={this.stockPhoto} />
               </div>
               <div>
-                <IonSpinner name="bubbles" style={this.SpinnerStyle} />
+                <IonSpinner name="bubbles" style={this.spinnerStyle} />
               </div>
               <p>
                   We are searching all missing persons databases. If there are any potential matches. You'll see them here.
