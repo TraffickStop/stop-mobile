@@ -42,7 +42,7 @@ class SearchingModal extends React.Component<Props> {
         );
       };
 
-    private SearchingModalStyle: CSS.Properties = {
+    private searchingModalStyle: CSS.Properties = {
         color: 'black',
         textAlign: 'center',
         width: '100%',
@@ -54,12 +54,12 @@ class SearchingModal extends React.Component<Props> {
         justifyContent: 'space-between',    
     }
 
-    private ImageContainerStyle: CSS.Properties = {
+    private imageContainerStyle: CSS.Properties = {
         textAlign: 'center',
         padding: '2rem'
     }
 
-    private SpinnerStyle: CSS.Properties = {
+    private spinnerStyle: CSS.Properties = {
         transform: 'scale(1.5)'
     }
 
