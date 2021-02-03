@@ -38,7 +38,11 @@ function AppContextProvider(props) {
 
   useEffect(() => {
     // Persist any state we want to
-    localStorage.setItem('persistedState', JSON.stringify(state))
+    let smallStorage = {
+      onboarded: state.onboarded,
+      noFacesFound: state.noFacesFound
+    }
+    localStorage.setItem('persistedState', JSON.stringify(smallStorage))
   }, [state])
 
   return <AppContext.Provider value={value}>{props.children}</AppContext.Provider>

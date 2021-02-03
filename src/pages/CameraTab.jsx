@@ -27,7 +27,8 @@ const CameraTab = ({ history }) => {
     Haptics.impact({
       style: HapticsImpactStyle.Heavy
     })
-    const result = await CameraPreview.capture({ quality: 100 })
+    const result = await CameraPreview.capture({ quality: 100 }) // , width: 2250, height: 4872 Makes the photo bigger but causes an error sometimes Localstorage quota exceeded
+    console.log(':::Captured photo')
     dispatch({
       type: 'setCurrentPhoto',
       value: result.value
@@ -50,7 +51,7 @@ const CameraTab = ({ history }) => {
 
   useEffect(() => {
     if (state.noFacesFound === true) {
-      setShowInstructions(false)
+      // setShowInstructions(false)
     }
   }, [state.noFacesFound])
 
@@ -73,9 +74,9 @@ const CameraTab = ({ history }) => {
             <div className='lowerSection'>
               <strong>Tap the screen to take a photo.</strong>
               <div className='infoText'>Photos will be scanned, processed, and then deleted immediately and never shared.</div>
-              <IonButton expand='full' onClick={() => setShowInstructions(false)}>
+              {/* <IonButton expand='block' className='roundedButton' onClick={() => setShowInstructions(false)}>
                 Start
-              </IonButton>
+              </IonButton> */}
             </div>
           </div>
         )}

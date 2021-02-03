@@ -49,8 +49,9 @@
   justify-content: flex-end;
   color: white;
   padding: 20px;
-  padding-bottom: 180px;
+  padding-bottom: 220px;
   text-align: center;
+  pointer-events: none;
 }
 
 .CameraTab .instructionsOverlay .lowerSection {
@@ -76,4 +77,8 @@
   position: fixed;
   top: 0;
   left: 0;
+}
+
+.CameraTab .instructionsOverlay ion-button {
+  --border-radius: 10px;
 }

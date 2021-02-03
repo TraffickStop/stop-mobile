@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import './CameraViewfinder.css'
 
-import { Camera, Plugins } from '@capacitor/core'
+import { Plugins } from '@capacitor/core'
 import { CameraPreviewOptions, CameraPreviewFlashMode } from '@capacitor-community/camera-preview'
 
 const { CameraPreview } = Plugins

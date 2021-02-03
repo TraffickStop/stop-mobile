@@ -2,6 +2,11 @@
   /* width: px; */
 }
 
+.FacesPage .backgroundContent {
+  width: 100%;
+  height: 100%;
+}
+
 .FacesPage .selectedFace {
   width: 60%;
   max-width: 300px;
