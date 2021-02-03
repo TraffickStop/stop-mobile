@@ -6,6 +6,8 @@ import './Faces.css'
 
 import { AppContext } from '../State'
 
+import ReactLoading from 'react-loading'
+
 import { AnimatePresence, motion } from 'framer-motion'
 
 // Import @tensorflow/tfjs-core
@@ -27,6 +29,7 @@ const FacesPage = ({ history }) => {
   const [faceData, setFaceData] = useState([])
   const [selectedFace, setSelectedFace] = useState(null)
   const [backgroundImage, setBackgroundImage] = useState(null)
+  const [pageLoading, setPageLoading] = useState(true)
 
   function loadImage(url) {
     return new Promise((resolve, reject) => {
@@ -97,6 +100,9 @@ const FacesPage = ({ history }) => {
     // bounding boxes, probabilities, and landmarks, one for each detected face.
     const returnTensors = false // Pass in `true` to get tensors back, rather than values.
     const predictions = await model.estimateFaces(image, returnTensors)
+
+    setPageLoading(false)
+
     if (predictions.length > 0) {
       /*
       `predictions` is an array of objects describing each detected face, for example:
@@ -194,6 +200,8 @@ const FacesPage = ({ history }) => {
           <img src={backgroundImage} />
         </div> */}
         <div className='FacesPageContent'>
+          {pageLoading && <ReactLoading type='bubbles' color='#22a6b3' width={100} />}
+
           {faceData.length > 1 && selectedFace === null && <h1>Which Person?</h1>}
 
           <motion.div layout className='FaceGrid'>
@@ -215,7 +223,7 @@ const FacesPage = ({ history }) => {
                 <motion.div className='selectedFace'>
                   <img src={selectedFace} />
                 </motion.div>
-                <IonSpinner />
+                <ReactLoading type='bubbles' color='#22a6b3' width={80} />
                 <h2>Searching</h2>
                 <p>We are searching our missing persons databases. If there are any potential matches, you'll see them here.</p>
               </>
