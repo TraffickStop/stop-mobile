@@ -15,7 +15,7 @@ import '@tensorflow/tfjs-backend-cpu'
 
 import { Plugins, HapticsImpactStyle } from '@capacitor/core'
 
-import Jimp from 'jimp'
+var Clipper = require('image-clipper')
 
 const { Haptics } = Plugins
 
@@ -87,7 +87,7 @@ const FacesPage = ({ history }) => {
     const imageData = 'data:image/jpeg;base64,' + state.currentPhoto
     const image = await loadImage(imageData)
 
-    setBackgroundImage(imageData)
+    // setBackgroundImage(imageData)
 
     // console.log(':::face loaded')
 
@@ -117,23 +117,41 @@ const FacesPage = ({ history }) => {
         let imageBuffer = Buffer.from(state.currentPhoto, 'base64')
         // let imageBuffer = Buffer.from(faceimage.replace('data:image/jpeg;base64,', ''), 'base64')
 
-        Jimp.read(imageBuffer, (err, img) => {
-          if (err) throw err
-          img
-            // .rotate(faceRotation)
-            .crop(face[0], face[1], face[2], face[3])
-
-            .getBase64(Jimp.AUTO, (err, res) => {
+        Clipper(imageData, function () {
+          this.crop(face[0], face[1], face[2], face[3])
+            .quality(100)
+            .toDataURL(function (dataUrl) {
               faceProcessingCounter += 1
-              faces.push(res)
+              faces.push(dataUrl)
+              //   faces.push(dataUrl)
+              //   faces.push(dataUrl)
+
               if (faceProcessingCounter === predictions.length) {
                 setFaceData(faces)
                 if (predictions.length === 1) {
-                  setSelectedFace(res)
+                  setSelectedFace(dataUrl)
                 }
               }
             })
         })
+
+        // Jimp.read(imageBuffer, (err, img) => {
+        //   if (err) throw err
+        //   img
+        //     // .rotate(faceRotation)
+        //     .crop(face[0], face[1], face[2], face[3])
+
+        //     .getBase64(Jimp.AUTO, (err, res) => {
+        //       faceProcessingCounter += 1
+        //       faces.push(res)
+        //       if (faceProcessingCounter === predictions.length) {
+        //         setFaceData(faces)
+        //         if (predictions.length === 1) {
+        //           setSelectedFace(res)
+        //         }
+        //       }
+        //     })
+        // })
       }
     } else {
       dispatch({ type: 'setNoFacesFound', value: true })
@@ -172,9 +190,9 @@ const FacesPage = ({ history }) => {
   return (
     <IonPage className='FacesPage'>
       <IonContent>
-        <div className='backgroundContent'>
+        {/* <div className='backgroundContent'>
           <img src={backgroundImage} />
-        </div>
+        </div> */}
         <div className='FacesPageContent'>
           {faceData.length > 1 && selectedFace === null && <h1>Which Person?</h1>}
 
