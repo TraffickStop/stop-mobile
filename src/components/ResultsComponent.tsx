@@ -54,7 +54,7 @@ export default class ResultsComponent extends React.Component<Props, State> {
         );
       };
 
-    private ResultComponentStyle: CSS.Properties = {
+    private resultComponentStyle: CSS.Properties = {
         color: 'black',
         textAlign: 'center',
         width: '100%',
@@ -62,16 +62,16 @@ export default class ResultsComponent extends React.Component<Props, State> {
         // padding: '1rem 0 rem 0',
     }
 
-    private ImageContainerStyle: CSS.Properties = {
+    private imageContainerStyle: CSS.Properties = {
         textAlign: 'center',
         padding: '2rem'
     }
 
-    private SpinnerStyle: CSS.Properties = {
+    private spinnerStyle: CSS.Properties = {
         transform: 'scale(1.5)'
     }
 
-    private ResultButtonStyle: CSS.Properties = {
+    private resultButtonStyle: CSS.Properties = {
         paddingTop: '1em'
     }
     }
