@@ -10,4 +10,13 @@ type People @model {
   sex: String
   race: String
   dateModified: String
+  imageFilename: String
+  imagePath: String
+  faceVector: [FaceVector]
+}
+
+type FaceVector @model {
+  id: ID!
+  person: People
+  vector: String
 }

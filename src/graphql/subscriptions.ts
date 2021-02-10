@@ -16,6 +16,31 @@ export const onCreatePeople = /* GraphQL */ `
       sex
       race
       dateModified
+      imageFilename
+      imagePath
+      faceVector {
+        id
+        person {
+          id
+          caseNumber
+          firstName
+          lastName
+          missingAge
+          city
+          county
+          state
+          sex
+          race
+          dateModified
+          imageFilename
+          imagePath
+          createdAt
+          updatedAt
+        }
+        vector
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -35,6 +60,31 @@ export const onUpdatePeople = /* GraphQL */ `
       sex
       race
       dateModified
+      imageFilename
+      imagePath
+      faceVector {
+        id
+        person {
+          id
+          caseNumber
+          firstName
+          lastName
+          missingAge
+          city
+          county
+          state
+          sex
+          race
+          dateModified
+          imageFilename
+          imagePath
+          createdAt
+          updatedAt
+        }
+        vector
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -54,6 +104,130 @@ export const onDeletePeople = /* GraphQL */ `
       sex
       race
       dateModified
+      imageFilename
+      imagePath
+      faceVector {
+        id
+        person {
+          id
+          caseNumber
+          firstName
+          lastName
+          missingAge
+          city
+          county
+          state
+          sex
+          race
+          dateModified
+          imageFilename
+          imagePath
+          createdAt
+          updatedAt
+        }
+        vector
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateFaceVector = /* GraphQL */ `
+  subscription OnCreateFaceVector {
+    onCreateFaceVector {
+      id
+      person {
+        id
+        caseNumber
+        firstName
+        lastName
+        missingAge
+        city
+        county
+        state
+        sex
+        race
+        dateModified
+        imageFilename
+        imagePath
+        faceVector {
+          id
+          vector
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      vector
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateFaceVector = /* GraphQL */ `
+  subscription OnUpdateFaceVector {
+    onUpdateFaceVector {
+      id
+      person {
+        id
+        caseNumber
+        firstName
+        lastName
+        missingAge
+        city
+        county
+        state
+        sex
+        race
+        dateModified
+        imageFilename
+        imagePath
+        faceVector {
+          id
+          vector
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      vector
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteFaceVector = /* GraphQL */ `
+  subscription OnDeleteFaceVector {
+    onDeleteFaceVector {
+      id
+      person {
+        id
+        caseNumber
+        firstName
+        lastName
+        missingAge
+        city
+        county
+        state
+        sex
+        race
+        dateModified
+        imageFilename
+        imagePath
+        faceVector {
+          id
+          vector
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      vector
       createdAt
       updatedAt
     }
