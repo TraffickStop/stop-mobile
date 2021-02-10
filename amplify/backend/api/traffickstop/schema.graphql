@@ -1,0 +1,13 @@
+type People @model {
+  id: ID!
+  caseNumber: String
+  firstName: String
+  lastName: String
+  missingAge: Int
+  city: String
+  county: String
+  state: String
+  sex: String
+  race: String
+  dateModified: String
+}

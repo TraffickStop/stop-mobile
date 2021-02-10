@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-traffickstop-dev-105420-authRole",
+      "UnauthRoleArn": "arn:aws:iam::694415534571:role/amplify-traffickstop-dev-105420-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::694415534571:role/amplify-traffickstop-dev-105420-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-traffickstop-dev-105420-deployment",
+      "UnauthRoleName": "amplify-traffickstop-dev-105420-unauthRole",
+      "StackName": "amplify-traffickstop-dev-105420",
+      "StackId": "arn:aws:cloudformation:us-east-1:694415534571:stack/amplify-traffickstop-dev-105420/0276a2e0-6bc9-11eb-a16c-12312be5d5ed",
+      "AmplifyAppId": "d3oscmdk3ot1ji"
+    }
+  }
+}
