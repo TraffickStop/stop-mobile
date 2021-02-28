@@ -5,7 +5,9 @@ let AppContext = createContext()
 const initialState = {
   onboarded: false,
   currentPhoto: null,
-  noFacesFound: false
+  selectedFace: null,
+  noFacesFound: false,
+  match: null
 }
 
 const persistedState = JSON.parse(localStorage.getItem('persistedState'))
@@ -18,9 +20,16 @@ let reducer = (state, action) => {
     case 'setCurrentPhoto': {
       return { ...state, currentPhoto: action.value }
     }
+    case 'setSelectedFace': {
+      return { ...state, selectedFace: action.value }
+    }
     case 'setNoFacesFound': {
       return { ...state, noFacesFound: action.value }
     }
+    case 'setMatch': {
+      return { ...state, match: action.value }
+    }
+
     default: {
     }
   }

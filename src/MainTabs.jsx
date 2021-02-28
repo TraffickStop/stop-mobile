@@ -6,6 +6,7 @@ import { IonReactRouter } from '@ionic/react-router'
 import { ellipse, square, triangle } from 'ionicons/icons'
 import CameraTab from './pages/CameraTab'
 import FacesPage from './pages/Faces'
+import ResultsPage from './pages/Results'
 import Tab2 from './pages/Tab2'
 import Tab3 from './pages/Tab3'
 
@@ -43,6 +44,7 @@ const MainApp = (props) => {
         <AnimatePresence exitBeforeEnter>
           <Route path='/main/:tab(camera)' component={CameraTab} exact />
           <Route path='/main/:tab(camera)/faces' component={FacesPage} exact />
+          <Route path='/main/:tab(camera)/results' component={ResultsPage} exact />
           <Route path='/' render={() => <Redirect to='/main/:tab(camera)' />} exact />
         </AnimatePresence>
       </IonRouterOutlet>

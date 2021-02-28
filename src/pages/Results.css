@@ -1,0 +1,63 @@
+.ResultsPage .faceSelectorBox {
+  /* width: px; */
+}
+
+.ResultsPage .backgroundContent {
+  width: 100%;
+  height: 100%;
+}
+
+.ResultsPage .selectedFace {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.ResultsPage .selectedFaceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ResultsPage .ageGenderPrediction {
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.ResultsPage .selectedFace img {
+  border-radius: 10px;
+}
+
+.ResultsPage .faceSelectorBox img {
+  border-radius: 10px;
+}
+
+.ResultsPage .ResultsPageContent {
+  height: 80%;
+  padding: 20px;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ResultsPage .FaceGrid {
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  margin-top: 20px;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.ResultsPage .FaceGrid > div {
+  flex: 0 32%;
+  height: 100px;
+  margin-bottom: 2%; /* (100-32*3)/2 */
+}
