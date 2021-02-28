@@ -32,9 +32,6 @@ const FacesPage = ({ history }) => {
 
   const [faceData, setFaceData] = useState([])
   const [selectedFace, setSelectedFace] = useState(null)
-  const [selectedFaceAge, setSelectedFaceAge] = useState(null)
-  const [selectedFaceGender, setSelectedFaceGender] = useState(null)
-  const [backgroundImage, setBackgroundImage] = useState(null)
   const [pageLoading, setPageLoading] = useState(true)
   const [pageLoadTime, setPageLoadTime] = useState(Date.now())
 
@@ -173,6 +170,7 @@ const FacesPage = ({ history }) => {
       value: selectedFace
     })
     if (selectedFace !== null) {
+      console.log(selectedFace.descriptor)
       checkDB(selectedFace.descriptor)
     }
   }, [selectedFace])
