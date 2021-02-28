@@ -28,34 +28,41 @@ const ResultsPage = ({ history }) => {
     setQueryFace(imageData)
   }, [state.selectedFace])
 
-  return (
-    <IonPage className='ResultsPage'>
-      <IonContent>
-        <div className='ResultsPageContent'>
-          <AnimatePresence>
-            {state.match === null && (
-              <motion.div className='selectedFaceContainer'>
-                <motion.div className='selectedFace'>
-                  <img src={queryFace} />
-                </motion.div>
-                <h2>Results</h2>
-                <p>This photo did not match any faces in our database. If you see something suspicious, please report it to the police and do not intervene.</p>
-              </motion.div>
-            )}
+  const item = {
+    visible: { opacity: [0, 1] },
+    hidden: { opacity: 0 }
+  }
 
-            {state.match !== null && (
-              <motion.div className='selectedFaceContainer'>
-                <motion.div className='selectedFace'>
-                  <img src={queryFace} />
+  return (
+    <motion.div key='resultstab' variants={item} initial='hidden' animate='visible' exit='hidden'>
+      <IonPage className='ResultsPage'>
+        <IonContent>
+          <div className='ResultsPageContent'>
+            <AnimatePresence>
+              {state.match === null && (
+                <motion.div className='selectedFaceContainer'>
+                  <motion.div className='selectedFace'>
+                    <img src={queryFace} />
+                  </motion.div>
+                  <h2>Results</h2>
+                  <p>This photo did not match any faces in our database. If you see something suspicious, please report it to the police and do not intervene.</p>
                 </motion.div>
-                <h2>Results</h2>
-                <p>This person may be {state.match}</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </IonContent>
-    </IonPage>
+              )}
+
+              {state.match !== null && (
+                <motion.div className='selectedFaceContainer'>
+                  <motion.div className='selectedFace'>
+                    <img src={queryFace} />
+                  </motion.div>
+                  <h2>Results</h2>
+                  <p>This person may be {state.match}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </IonContent>
+      </IonPage>
+    </motion.div>
   )
 }
 

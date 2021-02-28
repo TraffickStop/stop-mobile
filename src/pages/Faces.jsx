@@ -36,6 +36,7 @@ const FacesPage = ({ history }) => {
   const [selectedFaceGender, setSelectedFaceGender] = useState(null)
   const [backgroundImage, setBackgroundImage] = useState(null)
   const [pageLoading, setPageLoading] = useState(true)
+  const [pageLoadTime, setPageLoadTime] = useState(Date.now())
 
   function loadImage(url) {
     return new Promise((resolve, reject) => {
@@ -117,7 +118,7 @@ const FacesPage = ({ history }) => {
       style: HapticsImpactStyle.Heavy
     })
     setSelectedFace(faceData[idx])
-    console.log(faceData[idx].descriptor)
+    setPageLoadTime(Date.now())
   }
 
   const checkDB = async (faceDescriptor) => {
@@ -140,19 +141,33 @@ const FacesPage = ({ history }) => {
         type: 'setMatch',
         value: match._label
       })
-      history.push('/main/camera/results')
+      moveToResults()
     } else {
       dispatch({
         type: 'setMatch',
         value: null
       })
-      history.push('/main/camera/results')
+      moveToResults()
     }
 
     // File.writeFile(File.dataDirectory, 'missing_persons.json', fileData)
   }
 
+  const moveToResults = () => {
+    const offset = Date.now() - pageLoadTime
+    const minTime = 5000
+    console.log('offset', offset)
+    if (offset < minTime) {
+      setTimeout(() => {
+        history.push('/main/camera/results')
+      }, minTime - offset)
+    } else {
+      history.push('/main/camera/results')
+    }
+  }
+
   useEffect(() => {
+    setPageLoadTime(Date.now())
     dispatch({
       type: 'setSelectedFace',
       value: selectedFace
@@ -166,58 +181,84 @@ const FacesPage = ({ history }) => {
     findFaces()
   }, [state.currentPhoto])
 
+  const list = {
+    visible: {
+      opacity: 1,
+      transition: {
+        when: 'beforeChildren',
+        staggerChildren: 0.7
+      }
+    },
+    hidden: {
+      opacity: 0,
+      transition: {
+        when: 'afterChildren'
+      }
+    }
+  }
+  const item = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 }
+  }
+
   return (
-    <IonPage className='FacesPage'>
-      <IonContent>
-        {/* <div className='backgroundContent'>
+    <motion.div key='facestab' variants={item} initial='hidden' animate='visible' exit='hidden'>
+      <IonPage className='FacesPage'>
+        <IonContent>
+          {/* <div className='backgroundContent'>
           <img src={backgroundImage} />
         </div> */}
-        <div className='FacesPageContent'>
-          <AnimatePresence exitBeforeEnter>
-            {pageLoading && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                <ReactLoading type='bubbles' color='#22a6b3' width={100} />
-              </motion.div>
-            )}
-            {!pageLoading && faceData.length > 1 && selectedFace === null && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                <h1>Which Person?</h1>
-
-                <div className='FaceGrid'>
-                  {faceData.length > 1 &&
-                    selectedFace === null &&
-                    faceData.map((face, index) => {
-                      return (
-                        <div key={`face${index}`} className='faceSelectorBox' onClick={() => selectFace(index)}>
-                          <img src={face.img} />
-                        </div>
-                      )
-                    })}
-                </div>
-              </motion.div>
-            )}
-            {!pageLoading && selectedFace !== null && (
-              <motion.div className='selectedFaceContainer' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-                <motion.div className='selectedFace'>
-                  <img src={selectedFace.img} />
+          <div className='FacesPageContent'>
+            <AnimatePresence exitBeforeEnter>
+              {pageLoading && (
+                <motion.div key='loadingBubbles' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  <ReactLoading type='bubbles' color='#2b2b2b' width={100} />
                 </motion.div>
-                <motion.div className='ageGenderPrediction' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                  <div>
-                    We predict this is a {selectedFace.age} year old {selectedFace.gender}
+              )}
+              {!pageLoading && faceData.length > 1 && selectedFace === null && (
+                <motion.div key='SelectorContainerKey' initial={{ opacity: 0 }} animate={{ opacity: [0, 1] }} exit={{ opacity: 0 }}>
+                  <h1>Which Person?</h1>
+
+                  <div className='FaceGrid'>
+                    {faceData.length > 1 &&
+                      selectedFace === null &&
+                      faceData.map((face, index) => {
+                        return (
+                          <div key={`face${index}`} className='faceSelectorBox' onClick={() => selectFace(index)}>
+                            <img src={face.img} />
+                          </div>
+                        )
+                      })}
                   </div>
                 </motion.div>
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                  <ReactLoading type='bubbles' color='#22a6b3' width={80} />
-                </motion.div>
+              )}
+              {!pageLoading && selectedFace !== null && (
+                <motion.div key='SearchingContainerKey' className='selectedFaceContainer' initial={{ opacity: 0 }} animate={{ opacity: [0, 1] }} exit={{ opacity: 0 }}>
+                  <motion.div className='selectedFaceContainer' initial='hidden' animate='visible' variants={list}>
+                    <motion.div className='selectedFace' variants={item}>
+                      <img src={selectedFace.img} />
+                    </motion.div>
+                    <motion.div className='ageGenderPrediction' variants={item}>
+                      <div>
+                        We predict this is a {selectedFace.age} year old {selectedFace.gender}
+                      </div>
+                    </motion.div>
+                    <motion.div variants={item}>
+                      <ReactLoading type='bubbles' color='#2b2b2b' width={80} />
+                    </motion.div>
 
-                <h2>Searching</h2>
-                <p>We are searching our missing persons databases. If there are any potential matches, you'll see them here.</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </IonContent>
-    </IonPage>
+                    <motion.div variants={item} className='selectedFaceContainer'>
+                      <h2>Searching</h2>
+                      <p variants={item}>We are searching our missing persons databases. If there are any potential matches, you'll see them here.</p>
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </IonContent>
+      </IonPage>
+    </motion.div>
   )
 }
 

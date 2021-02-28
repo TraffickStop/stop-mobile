@@ -27,6 +27,8 @@
 .FacesPage .ageGenderPrediction {
   margin-top: 20px;
   font-weight: 500;
+  font-size: 0.8rem;
+  color: #aaa;
 }
 
 .FacesPage .selectedFace img {
@@ -38,8 +40,7 @@
 }
 
 .FacesPage .FacesPageContent {
-  height: 80%;
-  padding: 20px;
+  /* height: 80%; */
   padding-top: 100px;
   display: flex;
   flex-direction: column;
@@ -48,16 +49,24 @@
 }
 
 .FacesPage .FaceGrid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: masonry;
+  column-gap: 10px;
+
+  /* display: flex; */
+  padding: 20px;
   /* flex-direction: column; */
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   margin-top: 20px;
-  justify-content: space-around;
-  align-content: center;
+  /* justify-content: space-around; */
+  /* align-content: center; */
+  /* background-color: #0a3d62; */
+  /* border-top-left-radius: 10px; */
 }
 
 .FacesPage .FaceGrid > div {
   flex: 0 32%;
-  height: 100px;
+  /* height: 100px; */
   margin-bottom: 2%; /* (100-32*3)/2 */
 }
