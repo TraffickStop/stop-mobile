@@ -34,6 +34,39 @@ export const onCreatePeople = /* GraphQL */ `
           dateModified
           imageFilename
           imagePath
+          agencyAddress
+          agencyCaseNumber
+          agencyCounty
+          agencyDateReported
+          agencyGeneralEmail
+          agencyInvestigator
+          agencyJurisdiction
+          agencyMainPhone
+          agencyName
+          agencyNotes
+          agencyOri
+          agencyType
+          agencyWebsiteURL
+          bodyHairDescription
+          circumstancesOfDisappearance
+          currentAge
+          dateOfLastContact
+          dlc
+          eyeDescription
+          facialHairDescription
+          hairColor
+          headHairDescription
+          height
+          leftEyeColor
+          location
+          middleName
+          namusCaseCreated
+          namusContactName
+          namusEmail
+          namusPhoneNumber
+          nickname
+          rightEyeColor
+          weight
           createdAt
           updatedAt
         }
@@ -41,6 +74,39 @@ export const onCreatePeople = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      agencyAddress
+      agencyCaseNumber
+      agencyCounty
+      agencyDateReported
+      agencyGeneralEmail
+      agencyInvestigator
+      agencyJurisdiction
+      agencyMainPhone
+      agencyName
+      agencyNotes
+      agencyOri
+      agencyType
+      agencyWebsiteURL
+      bodyHairDescription
+      circumstancesOfDisappearance
+      currentAge
+      dateOfLastContact
+      dlc
+      eyeDescription
+      facialHairDescription
+      hairColor
+      headHairDescription
+      height
+      leftEyeColor
+      location
+      middleName
+      namusCaseCreated
+      namusContactName
+      namusEmail
+      namusPhoneNumber
+      nickname
+      rightEyeColor
+      weight
       createdAt
       updatedAt
     }
@@ -78,6 +144,39 @@ export const onUpdatePeople = /* GraphQL */ `
           dateModified
           imageFilename
           imagePath
+          agencyAddress
+          agencyCaseNumber
+          agencyCounty
+          agencyDateReported
+          agencyGeneralEmail
+          agencyInvestigator
+          agencyJurisdiction
+          agencyMainPhone
+          agencyName
+          agencyNotes
+          agencyOri
+          agencyType
+          agencyWebsiteURL
+          bodyHairDescription
+          circumstancesOfDisappearance
+          currentAge
+          dateOfLastContact
+          dlc
+          eyeDescription
+          facialHairDescription
+          hairColor
+          headHairDescription
+          height
+          leftEyeColor
+          location
+          middleName
+          namusCaseCreated
+          namusContactName
+          namusEmail
+          namusPhoneNumber
+          nickname
+          rightEyeColor
+          weight
           createdAt
           updatedAt
         }
@@ -85,6 +184,39 @@ export const onUpdatePeople = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      agencyAddress
+      agencyCaseNumber
+      agencyCounty
+      agencyDateReported
+      agencyGeneralEmail
+      agencyInvestigator
+      agencyJurisdiction
+      agencyMainPhone
+      agencyName
+      agencyNotes
+      agencyOri
+      agencyType
+      agencyWebsiteURL
+      bodyHairDescription
+      circumstancesOfDisappearance
+      currentAge
+      dateOfLastContact
+      dlc
+      eyeDescription
+      facialHairDescription
+      hairColor
+      headHairDescription
+      height
+      leftEyeColor
+      location
+      middleName
+      namusCaseCreated
+      namusContactName
+      namusEmail
+      namusPhoneNumber
+      nickname
+      rightEyeColor
+      weight
       createdAt
       updatedAt
     }
@@ -122,6 +254,39 @@ export const onDeletePeople = /* GraphQL */ `
           dateModified
           imageFilename
           imagePath
+          agencyAddress
+          agencyCaseNumber
+          agencyCounty
+          agencyDateReported
+          agencyGeneralEmail
+          agencyInvestigator
+          agencyJurisdiction
+          agencyMainPhone
+          agencyName
+          agencyNotes
+          agencyOri
+          agencyType
+          agencyWebsiteURL
+          bodyHairDescription
+          circumstancesOfDisappearance
+          currentAge
+          dateOfLastContact
+          dlc
+          eyeDescription
+          facialHairDescription
+          hairColor
+          headHairDescription
+          height
+          leftEyeColor
+          location
+          middleName
+          namusCaseCreated
+          namusContactName
+          namusEmail
+          namusPhoneNumber
+          nickname
+          rightEyeColor
+          weight
           createdAt
           updatedAt
         }
@@ -129,6 +294,39 @@ export const onDeletePeople = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      agencyAddress
+      agencyCaseNumber
+      agencyCounty
+      agencyDateReported
+      agencyGeneralEmail
+      agencyInvestigator
+      agencyJurisdiction
+      agencyMainPhone
+      agencyName
+      agencyNotes
+      agencyOri
+      agencyType
+      agencyWebsiteURL
+      bodyHairDescription
+      circumstancesOfDisappearance
+      currentAge
+      dateOfLastContact
+      dlc
+      eyeDescription
+      facialHairDescription
+      hairColor
+      headHairDescription
+      height
+      leftEyeColor
+      location
+      middleName
+      namusCaseCreated
+      namusContactName
+      namusEmail
+      namusPhoneNumber
+      nickname
+      rightEyeColor
+      weight
       createdAt
       updatedAt
     }
@@ -158,6 +356,39 @@ export const onCreateFaceVector = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        agencyAddress
+        agencyCaseNumber
+        agencyCounty
+        agencyDateReported
+        agencyGeneralEmail
+        agencyInvestigator
+        agencyJurisdiction
+        agencyMainPhone
+        agencyName
+        agencyNotes
+        agencyOri
+        agencyType
+        agencyWebsiteURL
+        bodyHairDescription
+        circumstancesOfDisappearance
+        currentAge
+        dateOfLastContact
+        dlc
+        eyeDescription
+        facialHairDescription
+        hairColor
+        headHairDescription
+        height
+        leftEyeColor
+        location
+        middleName
+        namusCaseCreated
+        namusContactName
+        namusEmail
+        namusPhoneNumber
+        nickname
+        rightEyeColor
+        weight
         createdAt
         updatedAt
       }
@@ -191,6 +422,39 @@ export const onUpdateFaceVector = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        agencyAddress
+        agencyCaseNumber
+        agencyCounty
+        agencyDateReported
+        agencyGeneralEmail
+        agencyInvestigator
+        agencyJurisdiction
+        agencyMainPhone
+        agencyName
+        agencyNotes
+        agencyOri
+        agencyType
+        agencyWebsiteURL
+        bodyHairDescription
+        circumstancesOfDisappearance
+        currentAge
+        dateOfLastContact
+        dlc
+        eyeDescription
+        facialHairDescription
+        hairColor
+        headHairDescription
+        height
+        leftEyeColor
+        location
+        middleName
+        namusCaseCreated
+        namusContactName
+        namusEmail
+        namusPhoneNumber
+        nickname
+        rightEyeColor
+        weight
         createdAt
         updatedAt
       }
@@ -224,6 +488,39 @@ export const onDeleteFaceVector = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        agencyAddress
+        agencyCaseNumber
+        agencyCounty
+        agencyDateReported
+        agencyGeneralEmail
+        agencyInvestigator
+        agencyJurisdiction
+        agencyMainPhone
+        agencyName
+        agencyNotes
+        agencyOri
+        agencyType
+        agencyWebsiteURL
+        bodyHairDescription
+        circumstancesOfDisappearance
+        currentAge
+        dateOfLastContact
+        dlc
+        eyeDescription
+        facialHairDescription
+        hairColor
+        headHairDescription
+        height
+        leftEyeColor
+        location
+        middleName
+        namusCaseCreated
+        namusContactName
+        namusEmail
+        namusPhoneNumber
+        nickname
+        rightEyeColor
+        weight
         createdAt
         updatedAt
       }

@@ -13,6 +13,40 @@ type People @model {
   imageFilename: String
   imagePath: String
   faceVector: [FaceVector]
+
+  agencyAddress: String
+  agencyCaseNumber: String
+  agencyCounty: String
+  agencyDateReported: String
+  agencyGeneralEmail: String
+  agencyInvestigator: String
+  agencyJurisdiction: String
+  agencyMainPhone: String
+  agencyName: String
+  agencyNotes: String
+  agencyOri: String
+  agencyType: String
+  agencyWebsiteURL: String
+  bodyHairDescription: String
+  circumstancesOfDisappearance: String
+  currentAge: Int
+  dateOfLastContact: String
+  dlc: String
+  eyeDescription: String
+  facialHairDescription: String
+  hairColor: String
+  headHairDescription: String
+  height: String
+  leftEyeColor: String
+  location: String
+  middleName: String
+  namusCaseCreated: String
+  namusContactName: String
+  namusEmail: String
+  namusPhoneNumber: String
+  nickname: String
+  rightEyeColor: String
+  weight: String
 }
 
 type FaceVector @model {
