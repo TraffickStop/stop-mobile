@@ -19,7 +19,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 // import '@tensorflow/tfjs-node'
 // import '@tensorflow/tfjs-backend-webgl'
 
-import * as faceapi from 'face-api.js'
+// import * as tf from '@tensorflow/tfjs'
+import * as faceapi from '@vladmandic/face-api'
 
 import { Plugins, HapticsImpactStyle } from '@capacitor/core'
 
@@ -47,18 +48,15 @@ const FacesPage = ({ history }) => {
   }
 
   async function findFaces() {
+    console.log('Find faces')
     const imageData = 'data:image/jpeg;base64,' + state.currentPhoto
     const img = await loadImage(imageData)
 
-    const MODEL_URL = '/models'
-
-    await faceapi.loadSsdMobilenetv1Model(MODEL_URL)
-    await faceapi.loadFaceLandmarkModel(MODEL_URL)
-    await faceapi.loadFaceRecognitionModel(MODEL_URL)
-    await faceapi.loadFaceDetectionModel(MODEL_URL)
-    await faceapi.loadAgeGenderModel(MODEL_URL)
+    console.log('loaded image')
 
     let predictions = await faceapi.detectAllFaces(img).withFaceLandmarks().withFaceDescriptors().withAgeAndGender()
+
+    console.log('Detected faces')
 
     setPageLoading(false)
 
@@ -169,13 +167,15 @@ const FacesPage = ({ history }) => {
       type: 'setSelectedFace',
       value: selectedFace
     })
+
     if (selectedFace !== null) {
-      console.log(selectedFace.descriptor)
+      console.log('face', selectedFace.descriptor)
       checkDB(selectedFace.descriptor)
     }
   }, [selectedFace])
 
   useEffect(() => {
+    console.log('Loading...')
     findFaces()
   }, [state.currentPhoto])
 

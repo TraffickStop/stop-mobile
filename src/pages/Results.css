@@ -61,3 +61,8 @@
   height: 100px;
   margin-bottom: 2%; /* (100-32*3)/2 */
 }
+
+.ResultsPage .full-width {
+  margin-top: auto;
+  width: 100%;
+}

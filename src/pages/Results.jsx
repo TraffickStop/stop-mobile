@@ -1,18 +1,11 @@
-import { IonContent, IonPage, IonSpinner } from '@ionic/react'
-import { cloudSharp } from 'ionicons/icons'
+import { IonContent, IonPage, IonSpinner, IonButton } from '@ionic/react'
 import React, { useContext, useEffect, useState } from 'react'
-
-import { File } from '@ionic-native/file'
 
 import './Results.css'
 
 import { AppContext } from '../State'
 
-import ReactLoading from 'react-loading'
-
 import { AnimatePresence, motion } from 'framer-motion'
-
-import * as faceapi from 'face-api.js'
 
 import { Plugins, HapticsImpactStyle } from '@capacitor/core'
 
@@ -31,6 +24,10 @@ const ResultsPage = ({ history }) => {
   const item = {
     visible: { opacity: [0, 1] },
     hidden: { opacity: 0 }
+  }
+
+  const backToCamera = () => {
+    history.replace('/main/camera')
   }
 
   return (
@@ -58,6 +55,12 @@ const ResultsPage = ({ history }) => {
                   <p>This person may be {state.match}</p>
                 </motion.div>
               )}
+
+              <div className='full-width'>
+                <IonButton color='dark' expand='block' onClick={backToCamera}>
+                  Start Over
+                </IonButton>
+              </div>
             </AnimatePresence>
           </div>
         </IonContent>
