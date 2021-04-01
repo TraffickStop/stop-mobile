@@ -27,7 +27,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.6",
-    "@vladmandic/face-api": "^0.30.2",
+    "@vladmandic/face-api": "github:brycelund/face-api",
     "canvas": "^2.6.1",
     "capacitor-camera-preview": "^0.6.0",
     "cordova-plugin-advanced-http": "^3.1.0",

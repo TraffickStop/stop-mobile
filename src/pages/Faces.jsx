@@ -112,6 +112,7 @@ const FacesPage = ({ history }) => {
     Haptics.impact({
       style: HapticsImpactStyle.Heavy
     })
+    console.log('FACE: ', faceData[idx])
     setSelectedFace(faceData[idx])
     setPageLoadTime(Date.now())
   }

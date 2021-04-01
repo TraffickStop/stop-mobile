@@ -71,6 +71,7 @@ export const getPeople = /* GraphQL */ `
           updatedAt
         }
         vector
+        imageKey
         createdAt
         updatedAt
       }
@@ -136,6 +137,7 @@ export const listPeoples = /* GraphQL */ `
         faceVector {
           id
           vector
+          imageKey
           createdAt
           updatedAt
         }
@@ -200,6 +202,7 @@ export const getFaceVector = /* GraphQL */ `
         faceVector {
           id
           vector
+          imageKey
           createdAt
           updatedAt
         }
@@ -240,6 +243,7 @@ export const getFaceVector = /* GraphQL */ `
         updatedAt
       }
       vector
+      imageKey
       createdAt
       updatedAt
     }
@@ -305,6 +309,7 @@ export const listFaceVectors = /* GraphQL */ `
           updatedAt
         }
         vector
+        imageKey
         createdAt
         updatedAt
       }

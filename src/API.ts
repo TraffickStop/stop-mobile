@@ -210,10 +210,12 @@ export type DeletePeopleInput = {
 export type CreateFaceVectorInput = {
   id?: string | null,
   vector?: string | null,
+  imageKey?: string | null,
 };
 
 export type ModelFaceVectorConditionInput = {
   vector?: ModelStringInput | null,
+  imageKey?: ModelStringInput | null,
   and?: Array< ModelFaceVectorConditionInput | null > | null,
   or?: Array< ModelFaceVectorConditionInput | null > | null,
   not?: ModelFaceVectorConditionInput | null,
@@ -222,6 +224,7 @@ export type ModelFaceVectorConditionInput = {
 export type UpdateFaceVectorInput = {
   id: string,
   vector?: string | null,
+  imageKey?: string | null,
 };
 
 export type DeleteFaceVectorInput = {
@@ -299,6 +302,7 @@ export type ModelIDInput = {
 export type ModelFaceVectorFilterInput = {
   id?: ModelIDInput | null,
   vector?: ModelStringInput | null,
+  imageKey?: ModelStringInput | null,
   and?: Array< ModelFaceVectorFilterInput | null > | null,
   or?: Array< ModelFaceVectorFilterInput | null > | null,
   not?: ModelFaceVectorFilterInput | null,
@@ -325,7 +329,7 @@ export type CreatePeopleMutation = {
     dateModified: string | null,
     imageFilename: string | null,
     imagePath: string | null,
-    faceVector:  Array< {
+    faceVector:  {
       __typename: "FaceVector",
       id: string,
       person:  {
@@ -380,9 +384,10 @@ export type CreatePeopleMutation = {
         updatedAt: string,
       } | null,
       vector: string | null,
+      imageKey: string | null,
       createdAt: string,
       updatedAt: string,
-    } | null > | null,
+    } | null,
     agencyAddress: string | null,
     agencyCaseNumber: string | null,
     agencyCounty: string | null,
@@ -442,7 +447,7 @@ export type UpdatePeopleMutation = {
     dateModified: string | null,
     imageFilename: string | null,
     imagePath: string | null,
-    faceVector:  Array< {
+    faceVector:  {
       __typename: "FaceVector",
       id: string,
       person:  {
@@ -497,9 +502,10 @@ export type UpdatePeopleMutation = {
         updatedAt: string,
       } | null,
       vector: string | null,
+      imageKey: string | null,
       createdAt: string,
       updatedAt: string,
-    } | null > | null,
+    } | null,
     agencyAddress: string | null,
     agencyCaseNumber: string | null,
     agencyCounty: string | null,
@@ -559,7 +565,7 @@ export type DeletePeopleMutation = {
     dateModified: string | null,
     imageFilename: string | null,
     imagePath: string | null,
-    faceVector:  Array< {
+    faceVector:  {
       __typename: "FaceVector",
       id: string,
       person:  {
@@ -614,9 +620,10 @@ export type DeletePeopleMutation = {
         updatedAt: string,
       } | null,
       vector: string | null,
+      imageKey: string | null,
       createdAt: string,
       updatedAt: string,
-    } | null > | null,
+    } | null,
     agencyAddress: string | null,
     agencyCaseNumber: string | null,
     agencyCounty: string | null,
@@ -679,13 +686,14 @@ export type CreateFaceVectorMutation = {
       dateModified: string | null,
       imageFilename: string | null,
       imagePath: string | null,
-      faceVector:  Array< {
+      faceVector:  {
         __typename: "FaceVector",
         id: string,
         vector: string | null,
+        imageKey: string | null,
         createdAt: string,
         updatedAt: string,
-      } | null > | null,
+      } | null,
       agencyAddress: string | null,
       agencyCaseNumber: string | null,
       agencyCounty: string | null,
@@ -723,6 +731,7 @@ export type CreateFaceVectorMutation = {
       updatedAt: string,
     } | null,
     vector: string | null,
+    imageKey: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -752,13 +761,14 @@ export type UpdateFaceVectorMutation = {
       dateModified: string | null,
       imageFilename: string | null,
       imagePath: string | null,
-      faceVector:  Array< {
+      faceVector:  {
         __typename: "FaceVector",
         id: string,
         vector: string | null,
+        imageKey: string | null,
         createdAt: string,
         updatedAt: string,
-      } | null > | null,
+      } | null,
       agencyAddress: string | null,
       agencyCaseNumber: string | null,
       agencyCounty: string | null,
@@ -796,6 +806,7 @@ export type UpdateFaceVectorMutation = {
       updatedAt: string,
     } | null,
     vector: string | null,
+    imageKey: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -825,13 +836,14 @@ export type DeleteFaceVectorMutation = {
       dateModified: string | null,
       imageFilename: string | null,
       imagePath: string | null,
-      faceVector:  Array< {
+      faceVector:  {
         __typename: "FaceVector",
         id: string,
         vector: string | null,
+        imageKey: string | null,
         createdAt: string,
         updatedAt: string,
-      } | null > | null,
+      } | null,
       agencyAddress: string | null,
       agencyCaseNumber: string | null,
       agencyCounty: string | null,
@@ -869,6 +881,7 @@ export type DeleteFaceVectorMutation = {
       updatedAt: string,
     } | null,
     vector: string | null,
+    imageKey: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -894,7 +907,7 @@ export type GetPeopleQuery = {
     dateModified: string | null,
     imageFilename: string | null,
     imagePath: string | null,
-    faceVector:  Array< {
+    faceVector:  {
       __typename: "FaceVector",
       id: string,
       person:  {
@@ -949,9 +962,10 @@ export type GetPeopleQuery = {
         updatedAt: string,
       } | null,
       vector: string | null,
+      imageKey: string | null,
       createdAt: string,
       updatedAt: string,
-    } | null > | null,
+    } | null,
     agencyAddress: string | null,
     agencyCaseNumber: string | null,
     agencyCounty: string | null,
@@ -1014,13 +1028,14 @@ export type ListPeoplesQuery = {
       dateModified: string | null,
       imageFilename: string | null,
       imagePath: string | null,
-      faceVector:  Array< {
+      faceVector:  {
         __typename: "FaceVector",
         id: string,
         vector: string | null,
+        imageKey: string | null,
         createdAt: string,
         updatedAt: string,
-      } | null > | null,
+      } | null,
       agencyAddress: string | null,
       agencyCaseNumber: string | null,
       agencyCounty: string | null,
@@ -1084,13 +1099,14 @@ export type GetFaceVectorQuery = {
       dateModified: string | null,
       imageFilename: string | null,
       imagePath: string | null,
-      faceVector:  Array< {
+      faceVector:  {
         __typename: "FaceVector",
         id: string,
         vector: string | null,
+        imageKey: string | null,
         createdAt: string,
         updatedAt: string,
-      } | null > | null,
+      } | null,
       agencyAddress: string | null,
       agencyCaseNumber: string | null,
       agencyCounty: string | null,
@@ -1128,6 +1144,7 @@ export type GetFaceVectorQuery = {
       updatedAt: string,
     } | null,
     vector: string | null,
+    imageKey: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -1197,6 +1214,7 @@ export type ListFaceVectorsQuery = {
         updatedAt: string,
       } | null,
       vector: string | null,
+      imageKey: string | null,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
@@ -1220,7 +1238,7 @@ export type OnCreatePeopleSubscription = {
     dateModified: string | null,
     imageFilename: string | null,
     imagePath: string | null,
-    faceVector:  Array< {
+    faceVector:  {
       __typename: "FaceVector",
       id: string,
       person:  {
@@ -1275,9 +1293,10 @@ export type OnCreatePeopleSubscription = {
         updatedAt: string,
       } | null,
       vector: string | null,
+      imageKey: string | null,
       createdAt: string,
       updatedAt: string,
-    } | null > | null,
+    } | null,
     agencyAddress: string | null,
     agencyCaseNumber: string | null,
     agencyCounty: string | null,
@@ -1332,7 +1351,7 @@ export type OnUpdatePeopleSubscription = {
     dateModified: string | null,
     imageFilename: string | null,
     imagePath: string | null,
-    faceVector:  Array< {
+    faceVector:  {
       __typename: "FaceVector",
       id: string,
       person:  {
@@ -1387,9 +1406,10 @@ export type OnUpdatePeopleSubscription = {
         updatedAt: string,
       } | null,
       vector: string | null,
+      imageKey: string | null,
       createdAt: string,
       updatedAt: string,
-    } | null > | null,
+    } | null,
     agencyAddress: string | null,
     agencyCaseNumber: string | null,
     agencyCounty: string | null,
@@ -1444,7 +1464,7 @@ export type OnDeletePeopleSubscription = {
     dateModified: string | null,
     imageFilename: string | null,
     imagePath: string | null,
-    faceVector:  Array< {
+    faceVector:  {
       __typename: "FaceVector",
       id: string,
       person:  {
@@ -1499,9 +1519,10 @@ export type OnDeletePeopleSubscription = {
         updatedAt: string,
       } | null,
       vector: string | null,
+      imageKey: string | null,
       createdAt: string,
       updatedAt: string,
-    } | null > | null,
+    } | null,
     agencyAddress: string | null,
     agencyCaseNumber: string | null,
     agencyCounty: string | null,
@@ -1559,13 +1580,14 @@ export type OnCreateFaceVectorSubscription = {
       dateModified: string | null,
       imageFilename: string | null,
       imagePath: string | null,
-      faceVector:  Array< {
+      faceVector:  {
         __typename: "FaceVector",
         id: string,
         vector: string | null,
+        imageKey: string | null,
         createdAt: string,
         updatedAt: string,
-      } | null > | null,
+      } | null,
       agencyAddress: string | null,
       agencyCaseNumber: string | null,
       agencyCounty: string | null,
@@ -1603,6 +1625,7 @@ export type OnCreateFaceVectorSubscription = {
       updatedAt: string,
     } | null,
     vector: string | null,
+    imageKey: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -1627,13 +1650,14 @@ export type OnUpdateFaceVectorSubscription = {
       dateModified: string | null,
       imageFilename: string | null,
       imagePath: string | null,
-      faceVector:  Array< {
+      faceVector:  {
         __typename: "FaceVector",
         id: string,
         vector: string | null,
+        imageKey: string | null,
         createdAt: string,
         updatedAt: string,
-      } | null > | null,
+      } | null,
       agencyAddress: string | null,
       agencyCaseNumber: string | null,
       agencyCounty: string | null,
@@ -1671,6 +1695,7 @@ export type OnUpdateFaceVectorSubscription = {
       updatedAt: string,
     } | null,
     vector: string | null,
+    imageKey: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -1695,13 +1720,14 @@ export type OnDeleteFaceVectorSubscription = {
       dateModified: string | null,
       imageFilename: string | null,
       imagePath: string | null,
-      faceVector:  Array< {
+      faceVector:  {
         __typename: "FaceVector",
         id: string,
         vector: string | null,
+        imageKey: string | null,
         createdAt: string,
         updatedAt: string,
-      } | null > | null,
+      } | null,
       agencyAddress: string | null,
       agencyCaseNumber: string | null,
       agencyCounty: string | null,
@@ -1739,6 +1765,7 @@ export type OnDeleteFaceVectorSubscription = {
       updatedAt: string,
     } | null,
     vector: string | null,
+    imageKey: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,

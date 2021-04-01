@@ -71,6 +71,7 @@ export const onCreatePeople = /* GraphQL */ `
           updatedAt
         }
         vector
+        imageKey
         createdAt
         updatedAt
       }
@@ -181,6 +182,7 @@ export const onUpdatePeople = /* GraphQL */ `
           updatedAt
         }
         vector
+        imageKey
         createdAt
         updatedAt
       }
@@ -291,6 +293,7 @@ export const onDeletePeople = /* GraphQL */ `
           updatedAt
         }
         vector
+        imageKey
         createdAt
         updatedAt
       }
@@ -353,6 +356,7 @@ export const onCreateFaceVector = /* GraphQL */ `
         faceVector {
           id
           vector
+          imageKey
           createdAt
           updatedAt
         }
@@ -393,6 +397,7 @@ export const onCreateFaceVector = /* GraphQL */ `
         updatedAt
       }
       vector
+      imageKey
       createdAt
       updatedAt
     }
@@ -419,6 +424,7 @@ export const onUpdateFaceVector = /* GraphQL */ `
         faceVector {
           id
           vector
+          imageKey
           createdAt
           updatedAt
         }
@@ -459,6 +465,7 @@ export const onUpdateFaceVector = /* GraphQL */ `
         updatedAt
       }
       vector
+      imageKey
       createdAt
       updatedAt
     }
@@ -485,6 +492,7 @@ export const onDeleteFaceVector = /* GraphQL */ `
         faceVector {
           id
           vector
+          imageKey
           createdAt
           updatedAt
         }
@@ -525,6 +533,7 @@ export const onDeleteFaceVector = /* GraphQL */ `
         updatedAt
       }
       vector
+      imageKey
       createdAt
       updatedAt
     }
