@@ -3,7 +3,7 @@ type People @model {
   caseNumber: String
   firstName: String
   lastName: String
-  missingAge: Int
+  missingAge: String
   city: String
   county: String
   state: String
@@ -12,7 +12,8 @@ type People @model {
   dateModified: String
   imageFilename: String
   imagePath: String
-  faceVector: FaceVector
+  faceVector: String
+  faceVectorId: FaceVector @connection(name: "PersonFaceVector")
   agencyAddress: String
   agencyCaseNumber: String
   agencyCounty: String
@@ -28,7 +29,7 @@ type People @model {
   agencyWebsiteURL: String
   bodyHairDescription: String
   circumstancesOfDisappearance: String
-  currentAge: Int
+  currentAge: String
   dateOfLastContact: String
   dlc: String
   eyeDescription: String
@@ -50,7 +51,7 @@ type People @model {
 
 type FaceVector @model {
   id: ID!
-  person: People
+  person: People @connection(name: "PersonFaceVector")
   vector: String
   imageKey: String
 }

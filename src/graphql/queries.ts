@@ -18,7 +18,8 @@ export const getPeople = /* GraphQL */ `
       dateModified
       imageFilename
       imagePath
-      faceVector {
+      faceVector
+      faceVectorId {
         id
         person {
           id
@@ -34,6 +35,7 @@ export const getPeople = /* GraphQL */ `
           dateModified
           imageFilename
           imagePath
+          faceVector
           agencyAddress
           agencyCaseNumber
           agencyCounty
@@ -67,13 +69,9 @@ export const getPeople = /* GraphQL */ `
           nickname
           rightEyeColor
           weight
-          createdAt
-          updatedAt
         }
         vector
         imageKey
-        createdAt
-        updatedAt
       }
       agencyAddress
       agencyCaseNumber
@@ -108,8 +106,6 @@ export const getPeople = /* GraphQL */ `
       nickname
       rightEyeColor
       weight
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -134,7 +130,8 @@ export const listPeoples = /* GraphQL */ `
         dateModified
         imageFilename
         imagePath
-        faceVector {
+        faceVector
+        faceVectorId {
           id
           vector
           imageKey
@@ -181,6 +178,63 @@ export const listPeoples = /* GraphQL */ `
     }
   }
 `;
+export const listPeoplesSmall = /* GraphQL */ `
+  query ListPeoples(
+    $filter: ModelPeopleFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPeoples(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        caseNumber
+        firstName
+        lastName
+        missingAge
+        city
+        county
+        state
+        sex
+        race
+        imageFilename
+        imagePath
+        faceVectorId {
+          id
+          vector
+          imageKey
+        }
+        
+        agencyMainPhone
+        agencyName
+        agencyNotes
+        agencyOri
+        agencyType
+        agencyWebsiteURL
+        bodyHairDescription
+        circumstancesOfDisappearance
+        currentAge
+        dateOfLastContact
+        dlc
+        eyeDescription
+        facialHairDescription
+        hairColor
+        headHairDescription
+        height
+        leftEyeColor
+        location
+        middleName
+        namusCaseCreated
+        namusContactName
+        namusEmail
+        namusPhoneNumber
+        nickname
+        rightEyeColor
+        weight
+      }
+      nextToken
+    }
+  }
+`;
 export const getFaceVector = /* GraphQL */ `
   query GetFaceVector($id: ID!) {
     getFaceVector(id: $id) {
@@ -199,7 +253,8 @@ export const getFaceVector = /* GraphQL */ `
         dateModified
         imageFilename
         imagePath
-        faceVector {
+        faceVector
+        faceVectorId {
           id
           vector
           imageKey
@@ -272,6 +327,7 @@ export const listFaceVectors = /* GraphQL */ `
           dateModified
           imageFilename
           imagePath
+          faceVector
           agencyAddress
           agencyCaseNumber
           agencyCounty

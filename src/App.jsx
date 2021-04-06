@@ -34,6 +34,10 @@ import './App.css'
 
 import '@capacitor-community/camera-preview'
 
+import Amplify from 'aws-amplify'
+import config from './aws-exports'
+Amplify.configure(config)
+
 const App = () => {
   // const downloadModel = (model_name) => {
   //   console.log('Download block')
@@ -57,10 +61,6 @@ const App = () => {
   //     console.log('already got it block:', NativeStorage.getItem(model_name))
   //   }
   // }
-
-  // useEffect(() => {
-  //   // downloadModel('age_gender_model-weights_manifest')
-  // }, [])
 
   return (
     <AppContextProvider>

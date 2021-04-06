@@ -21,7 +21,8 @@ export const createPeople = /* GraphQL */ `
       dateModified
       imageFilename
       imagePath
-      faceVector {
+      faceVector
+      faceVectorId {
         id
         person {
           id
@@ -37,6 +38,7 @@ export const createPeople = /* GraphQL */ `
           dateModified
           imageFilename
           imagePath
+          faceVector
           agencyAddress
           agencyCaseNumber
           agencyCounty
@@ -135,7 +137,8 @@ export const updatePeople = /* GraphQL */ `
       dateModified
       imageFilename
       imagePath
-      faceVector {
+      faceVector
+      faceVectorId {
         id
         person {
           id
@@ -151,6 +154,7 @@ export const updatePeople = /* GraphQL */ `
           dateModified
           imageFilename
           imagePath
+          faceVector
           agencyAddress
           agencyCaseNumber
           agencyCounty
@@ -249,7 +253,8 @@ export const deletePeople = /* GraphQL */ `
       dateModified
       imageFilename
       imagePath
-      faceVector {
+      faceVector
+      faceVectorId {
         id
         person {
           id
@@ -265,6 +270,7 @@ export const deletePeople = /* GraphQL */ `
           dateModified
           imageFilename
           imagePath
+          faceVector
           agencyAddress
           agencyCaseNumber
           agencyCounty
@@ -365,7 +371,8 @@ export const createFaceVector = /* GraphQL */ `
         dateModified
         imageFilename
         imagePath
-        faceVector {
+        faceVector
+        faceVectorId {
           id
           vector
           imageKey
@@ -436,7 +443,8 @@ export const updateFaceVector = /* GraphQL */ `
         dateModified
         imageFilename
         imagePath
-        faceVector {
+        faceVector
+        faceVectorId {
           id
           vector
           imageKey
@@ -507,7 +515,8 @@ export const deleteFaceVector = /* GraphQL */ `
         dateModified
         imageFilename
         imagePath
-        faceVector {
+        faceVector
+        faceVectorId {
           id
           vector
           imageKey

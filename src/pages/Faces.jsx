@@ -119,23 +119,36 @@ const FacesPage = ({ history }) => {
 
   const checkDB = async (faceDescriptor) => {
     const file_response = await File.readAsText(File.dataDirectory, 'missing_persons.json')
-    const missing_persons = JSON.parse(file_response)
+    let missing_persons = JSON.parse(file_response)
+    // missing_persons['data'] = missing_persons.data.slice(0, 500)
 
-    const labeledDescriptors = missing_persons.data.map((person) => {
-      const des = Object.values(person.descriptor)
+    let matches = []
+    missing_persons.data.forEach((person) => {
+      const descriptor = JSON.parse(person.descriptor)
+      const des = Object.values(descriptor)
       const desarr = new Float32Array(des)
-      return new faceapi.LabeledFaceDescriptors(person.name, [desarr])
+
+      const dist = faceapi.euclideanDistance(faceDescriptor, desarr)
+      if (dist <= 0.5) {
+        matches.push({
+          id: person.id,
+          match: dist
+        })
+      }
     })
 
-    const faceMatcher = new faceapi.FaceMatcher(labeledDescriptors)
+    matches = matches.sort((a, b) => a.match > b.match)
+    if (matches.length > 3) {
+      matches = matches.slice(0, 3)
+    }
 
-    const match = faceMatcher.findBestMatch(faceDescriptor)
-    console.log('match', match)
+    // const match = faceMatcher.findBestMatch(faceDescriptor)
+    // console.log('match', match)
 
-    if (match._label !== 'unknown') {
+    if (matches.length > 0) {
       dispatch({
         type: 'setMatch',
-        value: match._label
+        value: matches
       })
       moveToResults()
     } else {

@@ -7,7 +7,8 @@ const initialState = {
   currentPhoto: null,
   selectedFace: null,
   noFacesFound: false,
-  match: null
+  match: null,
+  pulledFaces: false
 }
 
 const persistedState = JSON.parse(localStorage.getItem('persistedState'))
@@ -29,6 +30,10 @@ let reducer = (state, action) => {
     case 'setMatch': {
       return { ...state, match: action.value }
     }
+    case 'setPulledFaces': {
+      console.log('SETTING PLLED FACES', action.value)
+      return { ...state, pulledFaces: action.value }
+    }
 
     default: {
     }
@@ -49,7 +54,8 @@ function AppContextProvider(props) {
     // Persist any state we want to
     let smallStorage = {
       onboarded: state.onboarded,
-      noFacesFound: state.noFacesFound
+      noFacesFound: state.noFacesFound,
+      pulledFaces: state.pulledFaces
     }
     localStorage.setItem('persistedState', JSON.stringify(smallStorage))
   }, [state])

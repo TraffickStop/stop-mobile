@@ -3,14 +3,17 @@ import { Redirect, Route } from 'react-router-dom'
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 
-import { ellipse, square, triangle } from 'ionicons/icons'
+import { ellipse, people, square, triangle } from 'ionicons/icons'
 import CameraTab from './pages/CameraTab'
 import FacesPage from './pages/Faces'
 import ResultsPage from './pages/Results'
+import DetailsPage from './pages/SingleResult'
 import Tab2 from './pages/Tab2'
 import Tab3 from './pages/Tab3'
 
 import { AnimatePresence } from 'framer-motion'
+
+import Amplify, { API, graphqlOperation } from 'aws-amplify'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'
@@ -39,6 +42,8 @@ import { HTTP } from '@ionic-native/http'
 import * as faceapi from '@vladmandic/face-api'
 import * as tf from '@vladmandic/face-api/dist/tfjs.esm'
 
+import * as queries from './graphql/queries'
+
 // import * as tfn from '@tensorflow/tfjs-node'
 
 // import './tabs.scss'
@@ -47,8 +52,88 @@ import { AppContext } from './State'
 
 const { Filesystem } = Plugins
 
+const { unzip } = require('zlib')
+
 const MainApp = (props) => {
   const { state, dispatch } = useContext(AppContext)
+
+  let peopleList = []
+
+  // const saveFaces = async () => {
+  //   const tmpFile = {
+  //     data: peopleList
+  //   }
+  //   File.writeExistingFile(File.dataDirectory, 'missing_persons.json', JSON.stringify(tmpFile))
+  //   console.log('Save file')
+  //   dispatch({
+  //     type: 'setPulledFaces',
+  //     value: true
+  //   })
+  // }
+
+  // const scrapeFaceBatch = async (nextToken) => {
+  //   try {
+  //     const r = await API.graphql({ query: queries.listPeoplesSmall, variables: { limit: 1000, nextToken: nextToken } })
+  //     const items = r['data'].listPeoples.items
+  //     const nt = r['data'].listPeoples.nextToken
+
+  //     peopleList.push(...items)
+
+  //     if (nt === null) {
+  //       saveFaces()
+  //     } else {
+  //       scrapeFaceBatch(nt)
+  //     }
+  //     console.log(peopleList.length)
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }
+
+  const downloadFaces = () => {
+    const filePath = File.dataDirectory + 'missing_persons.json.gzip'
+    HTTP.downloadFile('https://traffick-stop-resources.s3.amazonaws.com/compressed_people.json.gzip', {}, {}, filePath)
+      .then(async (response) => {
+        // prints 200
+        console.log('success block...', response)
+
+        const compressed = await File.readAsBinaryString(File.dataDirectory, 'missing_persons.json.gzip')
+        console.log('COMPRESSED', compressed.length)
+        const buff = Buffer.from(compressed, 'binary')
+        unzip(buff, (err, buffer) => {
+          if (err) {
+            console.error('An error occurred:', err)
+            process.exitCode = 1
+          }
+          const decompressed = buffer.toString()
+          console.log('DECOMPRESSED', decompressed.length)
+          File.writeExistingFile(File.dataDirectory, 'missing_persons.json', decompressed)
+          dispatch({
+            type: 'setPulledFaces',
+            value: true
+          })
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+        // prints 403
+        console.log('error block ... ', err.status)
+        // prints Permission denied
+        console.log('error block ... ', err.error)
+      })
+  }
+
+  const checkFacesDownload = async () => {
+    console.log('CHECKING', state.pulledFaces)
+    if (state.pulledFaces === true) {
+      const file_response = await File.readAsText(File.dataDirectory, 'missing_persons.json')
+      const missing_persons = JSON.parse(file_response)
+      console.log('Already pulled faces', missing_persons.data.length)
+      return
+    } else {
+      downloadFaces()
+    }
+  }
 
   const loadModels = async () => {
     const MODEL_URL = 'https://raw.githubusercontent.com/vladmandic/face-api/master/model/' //'assets/models/'
@@ -102,6 +187,7 @@ const MainApp = (props) => {
 
   useEffect(() => {
     loadModels()
+    checkFacesDownload()
   }, [])
 
   useEffect(() => {
@@ -150,7 +236,7 @@ const MainApp = (props) => {
       ]
   }`
     // console.log('Wrote file')
-    File.writeExistingFile(File.dataDirectory, 'missing_persons.json', people)
+    // File.writeExistingFile(File.dataDirectory, 'missing_persons.json', people)
   }, [])
 
   return (
@@ -159,6 +245,8 @@ const MainApp = (props) => {
         <Route path='/main/:tab(camera)' component={CameraTab} exact />
         <Route path='/main/:tab(camera)/faces' component={FacesPage} exact />
         <Route path='/main/:tab(camera)/results' component={ResultsPage} exact />
+        <Route path='/main/:tab(camera)/results/details' component={DetailsPage} exact />
+
         <Route path='/' render={() => <Redirect to='/main/:tab(camera)' />} exact />
       </AnimatePresence>
     </IonRouterOutlet>

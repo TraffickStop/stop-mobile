@@ -40,7 +40,7 @@
 .ResultsPage .ResultsPageContent {
   height: 80%;
   padding: 20px;
-  padding-top: 100px;
+  padding-top: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,4 +65,50 @@
 .ResultsPage .full-width {
   margin-top: auto;
   width: 100%;
+}
+
+.ResultsPage .resultsContainer {
+  margin: 0px;
+}
+
+.ResultsPage .matchBox {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+}
+
+.ResultsPage .matchPhoto img {
+  border-radius: 10px;
+  margin: 5px;
+  max-width: 33vw;
+}
+
+.ResultsPage .matchInfoBox {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ResultsPage .matchName {
+  font-weight: 700;
+}
+
+.ResultsPage .sameRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ResultsPage .smallInfoText {
+  font-size: 0.9rem;
+}
+
+.ResultsPage .text-center {
+  text-align: center;
+}
+
+.ResultsPage .pageTitle {
+  font-weight: 500;
 }
